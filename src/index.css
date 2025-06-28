@@ -63,6 +63,7 @@ All colors MUST be HSL.
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    line-height: 1.6;
   }
 
   /* Allow text selection for specific content areas */
@@ -72,6 +73,51 @@ All colors MUST be HSL.
     -moz-user-select: text;
     -ms-user-select: text;
   }
+
+  /* Consistent heading styles */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold leading-tight;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+    margin-bottom: 1.25rem;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Consistent paragraph spacing */
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  /* Section padding consistency */
+  section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  @media (max-width: 768px) {
+    section {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
 }
 
 @layer components {
@@ -80,7 +126,7 @@ All colors MUST be HSL.
   }
   
   .premium-card {
-    @apply glass-effect rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+    @apply glass-effect rounded-xl p-8 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl;
   }
   
   .draggable-element {
@@ -92,7 +138,36 @@ All colors MUST be HSL.
   }
 
   .video-control-btn {
-    @apply bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 rounded-lg p-2 transition-all duration-200 hover:scale-110 shadow-lg;
+    @apply bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 rounded-lg transition-all duration-200 hover:scale-110 shadow-lg;
+  }
+
+  /* Responsive spacing utilities */
+  .section-padding {
+    @apply py-24 px-4;
+  }
+
+  @media (max-width: 768px) {
+    .section-padding {
+      @apply py-16 px-4;
+    }
+  }
+
+  .container-padding {
+    @apply max-w-6xl mx-auto px-4;
+  }
+
+  .text-spacing {
+    @apply mb-6 leading-relaxed;
+  }
+
+  .heading-margin {
+    @apply mb-8;
+  }
+
+  @media (max-width: 768px) {
+    .heading-margin {
+      @apply mb-6;
+    }
   }
 }
 
@@ -105,7 +180,7 @@ All colors MUST be HSL.
   animation: gradient 3s ease infinite;
 }
 
-/* Enhance scrollbar styling */
+/* Enhanced scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -122,4 +197,44 @@ All colors MUST be HSL.
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(139, 92, 246, 0.8);
+}
+
+/* Responsive design improvements */
+@media (max-width: 640px) {
+  .premium-card {
+    @apply p-6;
+  }
+  
+  h1 {
+    @apply text-3xl;
+  }
+  
+  h2 {
+    @apply text-2xl;
+  }
+  
+  h3 {
+    @apply text-xl;
+  }
+}
+
+/* Animation improvements */
+@keyframes gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
 }
