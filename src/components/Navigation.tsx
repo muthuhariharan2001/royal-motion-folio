@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, X, User, Briefcase, Code, Contact, MapPin, School } from 'lucide-react';
+import { Menu, X, User, Briefcase, Code, Contact, MapPin, School, FolderOpen } from 'lucide-react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +10,7 @@ const Navigation = () => {
     { name: 'Education', path: '/education', icon: School },
     { name: 'Experience', path: '/experience', icon: Briefcase },
     { name: 'Skills', path: '/skills', icon: Code },
-    { name: 'Projects', path: '/projects', icon: Projector },
+    { name: 'Projects', path: '/projects', icon: FolderOpen },
     { name: 'Contact', path: '/contact', icon: Contact },
   ];
 

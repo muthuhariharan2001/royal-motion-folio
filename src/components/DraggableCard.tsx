@@ -5,9 +5,10 @@ interface DraggableCardProps {
   children: React.ReactNode;
   className?: string;
   id: string;
+  style?: React.CSSProperties;
 }
 
-const DraggableCard: React.FC<DraggableCardProps> = ({ children, className = '', id }) => {
+const DraggableCard: React.FC<DraggableCardProps> = ({ children, className = '', id, style }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
@@ -38,7 +39,8 @@ const DraggableCard: React.FC<DraggableCardProps> = ({ children, className = '',
       className={`draggable-element ${className} ${isDragging ? 'z-50 rotate-3' : ''}`}
       style={{
         transform: `translate(${position.x}px, ${position.y}px)`,
-        transition: isDragging ? 'none' : 'transform 0.3s ease'
+        transition: isDragging ? 'none' : 'transform 0.3s ease',
+        ...style
       }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
